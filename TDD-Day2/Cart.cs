@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace TDD_Day2
 {
-    internal class Cart
+    internal class Cart<T>
     {
         private Dictionary<int, double> rules;
 
@@ -13,7 +13,7 @@ namespace TDD_Day2
             this.rules = rules;
         }
 
-        internal double Checkout(List<Book> shoppingItems, Func<Book, int> selector)
+        internal double Checkout(List<T> shoppingItems, Func<T, int> selector)
         {
             double result = 0.0;
             result = GetAmout(shoppingItems, selector);
@@ -21,12 +21,12 @@ namespace TDD_Day2
             return result;
         }
 
-        private double GetAmout(List<Book> shoppingItems, Func<Book, int> selector)
+        private double GetAmout(List<T> shoppingItems, Func<T, int> selector)
         {
-            double result=0.0;
+            double result = 0.0;
             double discount = 0.0;
             var distinctItems = shoppingItems.Distinct().ToList();
-            if (distinctItems.Count()>1)
+            if (distinctItems.Count() > 1)
             {
                 var expectedItems = shoppingItems.ToList();
                 foreach (var item in distinctItems)
@@ -41,7 +41,7 @@ namespace TDD_Day2
             }
             else
                 result = distinctItems.Sum(selector);
-            
+
             return result;
         }
     }

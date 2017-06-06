@@ -29,7 +29,7 @@ namespace TDD_Day2
             {
                 new Book {Id=1,Price=100,Name="Harry Potter 1" }
             };
-            var target = new Cart(rules);
+            var target = new Cart<Book>(rules);
 
 
 
@@ -50,7 +50,7 @@ namespace TDD_Day2
                 new Book {Id=1,Price=100,Name="Harry Potter 1" },
                 new Book {Id=2,Price=100,Name="Harry Potter 2" }
             };
-            var target = new Cart(rules);
+            var target = new Cart<Book>(rules);
 
 
 
@@ -72,7 +72,7 @@ namespace TDD_Day2
                 new Book {Id=2,Price=100,Name="Harry Potter 2" },
                 new Book {Id=3,Price=100,Name="Harry Potter 3" }
             };
-            var target = new Cart(rules);
+            var target = new Cart<Book>(rules);
 
 
 
@@ -95,7 +95,7 @@ namespace TDD_Day2
                 new Book {Id=3,Price=100,Name="Harry Potter 3" },
                 new Book {Id=4,Price=100,Name="Harry Potter 4" }
             };
-            var target = new Cart(rules);
+            var target = new Cart<Book>(rules);
 
 
 
@@ -119,7 +119,7 @@ namespace TDD_Day2
                 new Book {Id=4,Price=100,Name="Harry Potter 4" },
                 new Book {Id=5,Price=100,Name="Harry Potter 5" }
             };
-            var target = new Cart(rules);
+            var target = new Cart<Book>(rules);
 
 
 
@@ -142,7 +142,7 @@ namespace TDD_Day2
                 new Book {Id=3,Price=100,Name="Harry Potter 3" },
                 new Book {Id=3,Price=100,Name="Harry Potter 3" }
             };
-            var target = new Cart(rules);
+            var target = new Cart<Book>(rules);
 
 
 
@@ -166,7 +166,7 @@ namespace TDD_Day2
                 new Book {Id=3,Price=100,Name="Harry Potter 3" },
                 new Book {Id=3,Price=100,Name="Harry Potter 3" }
             };
-            var target = new Cart(rules);
+            var target = new Cart<Book>(rules);
 
 
 
