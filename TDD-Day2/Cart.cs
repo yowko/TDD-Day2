@@ -26,17 +26,15 @@ namespace TDD_Day2
             double result = 0.0;
             double discount = 0.0;
             var distinctItems = shoppingItems.Distinct().ToList();
-            if (distinctItems.Count() > 1)
+            if (rules.TryGetValue(distinctItems.Count(), out discount))
             {
                 var expectedItems = shoppingItems.ToList();
                 foreach (var item in distinctItems)
                 {
                     expectedItems.Remove(item);
                 }
-                if (rules.TryGetValue(distinctItems.Count(), out discount))
-                {
-                    result = distinctItems.Sum(selector) * (1 - discount);
-                }
+                
+                result = distinctItems.Sum(selector) * (1 - discount);
                 result += GetAmout(expectedItems, selector);
             }
             else
