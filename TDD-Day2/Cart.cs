@@ -16,14 +16,32 @@ namespace TDD_Day2
         internal double Checkout(List<Book> shoppingItems, Func<Book, int> selector)
         {
             double result = 0.0;
+            result = GetAmout(shoppingItems, selector);
+
+            return result;
+        }
+
+        private double GetAmout(List<Book> shoppingItems, Func<Book, int> selector)
+        {
+            double result=0.0;
             double discount = 0.0;
-            if (rules.TryGetValue(shoppingItems.Count(), out discount))
+            var distinctItems = shoppingItems.Distinct().ToList();
+            if (distinctItems.Count()>1)
             {
-                result = shoppingItems.Sum(selector) * (1 - discount);
+                var expectedItems = shoppingItems.ToList();
+                foreach (var item in distinctItems)
+                {
+                    expectedItems.Remove(item);
+                }
+                if (rules.TryGetValue(distinctItems.Count(), out discount))
+                {
+                    result = distinctItems.Sum(selector) * (1 - discount);
+                }
+                result += GetAmout(expectedItems, selector);
             }
             else
-                result = shoppingItems.Sum(selector);
-
+                result = distinctItems.Sum(selector);
+            
             return result;
         }
     }

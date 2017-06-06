@@ -1,6 +1,6 @@
 ﻿namespace TDD_Day2
 {
-    internal class Book
+    internal struct Book
     {
         public int Id { get; internal set; }
         public int Price { get; internal set; }
