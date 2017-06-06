@@ -42,5 +42,27 @@ namespace TDD_Day2
             //assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+
+        public void 第一集買了一本_第二集也買了一本_價格應為190()
+        {
+            //arrange
+            var shoppingItems = new List<Book>()
+            {
+                new Book {Id=1,Price=100,Name="Harry Potter 1" },
+                new Book {Id=2,Price=100,Name="Harry Potter 2" }
+            };
+            var target = new Cart(rules);
+
+
+
+            var expected = 190;
+            //act
+            var actual = target.Checkout(shoppingItems, a => a.Price);
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
