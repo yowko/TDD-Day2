@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace TDD_Day2
 {
@@ -12,9 +13,18 @@ namespace TDD_Day2
             this.rules = rules;
         }
 
-        internal object Checkout(List<Book> shoppingItems, Func<object, object> p)
+        internal double Checkout(List<Book> shoppingItems, Func<Book, int> selector)
         {
-            throw new NotImplementedException();
+            double result = 0.0;
+            double discount = 0.0;
+            if (rules.TryGetValue(shoppingItems.Count(), out discount))
+            {
+                result = shoppingItems.Sum(selector) * (1 - discount);
+            }
+            else
+                result = shoppingItems.Sum(selector);
+
+            return result;
         }
     }
 }
